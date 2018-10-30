@@ -6,6 +6,7 @@ import armario from '@/components/armario'
 import carteira from '@/components/carteira'
 import login from '@/components/login'
 import home from '@/components/home'
+import logado from '@/components/logado'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/info/:nome',
       name: 'info',
       component: info
+    },
+    {
+      path: '/logado/:id',
+      name: 'logado',
+      component: logado
     },
     {
       path: '/conquistas',

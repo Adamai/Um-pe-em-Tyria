@@ -6,7 +6,7 @@
 
     <b-nav class="fixed-top navbar">
       <b-nav-item href="#/"><img src="./assets/upet.png" title="Um pé em Tyria"></b-nav-item>
-      <b-nav-item-dropdown text="Logado como: (usuário)" right class="ml-auto">
+      <b-nav-item-dropdown id="logged" text="Entrar" right class="ml-auto">
         <b-dropdown-item>Sair</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-nav>
@@ -40,7 +40,8 @@ export default {
   name: 'app',
   data () {
     return {
-      chars: []
+      chars: [],
+      idlogin: ''
     }
   },
   mounted () {

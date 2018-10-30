@@ -1,17 +1,15 @@
 <template>
-<div class="login">
+<div class="logado">
   <b-container class="login-data">
     <b-row>
       <b-col cols="2">
       </b-col>
       <b-col cols="8" id="caixa">
-  <h4>Entrar</h4>
-  <p>Id:<input v-model="idl"></input></p>
-  <p>Senha:<b-form-input type="password" v-model="password"></b-form-input></p>
-  <p>ALTERANDO AQUI: {{idl}}</p>
-  <p><router-link :to="{ name: 'logado', params: { id: idlogin } }">Entrar</router-link>
-     <b-button variant='danger'>Esqueci minha senha</b-button></p>
-  <p><b-button variant='alert'>Primeira vez</b-button></p>
+  <h4>Logado como:</h4>
+  <p>Id: {{id}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>Nickname: {{user.nickname}}</p>
+  <p>API-KEY: {{user.key}}</p>
   </b-col>
   <b-col cols="2">
   </b-col>
@@ -21,19 +19,29 @@
 </template>
 
 <script>
+
 export default {
-  name: 'login',
+  name: 'logado',
   data () {
     return {
-      // msg: 'Componente de Teste!!!',
-      // showDismissibleAlert: false
+      id: '',
+      user: []
     }
+  },
+  mounted () {
+    this.$http.get('http://localhost:9090/user/' + this.id
+  ).then(response => {
+    this.user = response.body
+  }, response => {
+      // error callback
+  })
   }
 }
 </script>
 
 <style>
-.login {
+
+.logado {
   text-align: left;
   background-image: url('../assets/home.jpg');
   background-position: fixed;
@@ -55,5 +63,4 @@ export default {
   background-color: rgba(0, 0, 0, 0.15);
 
 }
-
 </style>
